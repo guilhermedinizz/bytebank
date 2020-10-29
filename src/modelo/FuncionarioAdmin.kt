@@ -1,3 +1,5 @@
+package modelo
+
 abstract class FuncionarioAdmin(
     nome: String,
     cpf: String,
@@ -7,7 +9,7 @@ abstract class FuncionarioAdmin(
 
 
    override fun autentica(senha: Int): Boolean {
-       println("Autentica FuncionarioAdmin")
+       println("Autentica modelo.FuncionarioAdmin")
         if(this.senha == senha){
             return true
         }

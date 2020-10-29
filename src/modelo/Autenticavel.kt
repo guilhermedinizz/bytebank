@@ -1,3 +1,5 @@
+package modelo
+
 interface Autenticavel {
 
 
