@@ -1,8 +1,9 @@
 package modelo
 
 class Cliente(
-    val nome: String,
+    var nome: String,
     val cpf: String,
+    var endereco: Endereco = Endereco(),
     private val senha: Int
 ) : Autenticavel {
 

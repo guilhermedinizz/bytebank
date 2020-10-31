@@ -1,13 +1,19 @@
 package teste
 
+import modelo.Cliente
 import modelo.ContaCorrente
 import modelo.ContaPoupanca
 
 fun testaComportamentosConta() {
-    val contaGuilherme = ContaPoupanca("Guilherme Diniz", 1000)
+
+    val guiherme = Cliente(nome = "Guilherme Diniz", cpf = "111.111.111-11", senha = 1234)
+
+    val contaGuilherme = ContaPoupanca(guiherme, 1000)
     contaGuilherme.deposita(200.0)
 
-    val contaJoao = ContaCorrente("João Pedro", 1001)
+    val joao = Cliente(nome = "João Pedro", cpf = "222.222.222-22", senha = 4321)
+
+    val contaJoao = ContaCorrente(joao, 1001)
     contaJoao.deposita(300.0)
 
     println(contaGuilherme.titular)

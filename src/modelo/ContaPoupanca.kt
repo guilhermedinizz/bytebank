@@ -1,6 +1,6 @@
 package modelo
 
-class ContaPoupanca(titular: String, numero: Int) : Conta(
+class ContaPoupanca(titular: Cliente, numero: Int) : Conta(
     titular = titular,
     numero = numero
 ) {

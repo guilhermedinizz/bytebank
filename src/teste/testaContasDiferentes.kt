@@ -1,15 +1,24 @@
 package teste
 
+import modelo.Cliente
 import modelo.ContaCorrente
 import modelo.ContaPoupanca
 
 fun testaContasDiferentes() {
     val contaCorrente = ContaCorrente(
-        titular = "Guilherme",
+        titular = Cliente(
+            nome = "Guilherme Diniz",
+            cpf = "111.111.111-11",
+            senha = 1234
+        ),
         numero = 1000
     )
     val contaPoupanca = ContaPoupanca(
-        titular = "Joao",
+        titular = Cliente(
+            nome = "Joao",
+            cpf = "222.222.222-22",
+            senha = 4321
+        ),
         numero = 1001
     )
 

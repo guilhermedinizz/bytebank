@@ -1,6 +1,6 @@
 package modelo
 
-class ContaCorrente(titular: String, numero: Int) : Conta(
+class ContaCorrente(titular: Cliente, numero: Int) : Conta(
     titular = titular,
     numero = numero
 ) {
