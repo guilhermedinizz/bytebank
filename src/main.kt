@@ -1,9 +1,10 @@
 import modelo.Cliente
 import modelo.ContaPoupanca
 import modelo.Endereco
+import teste.testaHOF
 
 fun main() {
-    testaRun()
+    testaHOF()
 
 }
 
