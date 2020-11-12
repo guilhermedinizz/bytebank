@@ -1,9 +1,6 @@
-package teste
+package br.com.alura.bytebank.teste
 
-import modelo.Cliente
-import modelo.Diretor
-import modelo.Gerente
-import modelo.SistemaInterno
+import modelo.*
 
 fun testaAutenticacao() {
     val gerente = Gerente(
@@ -19,17 +16,14 @@ fun testaAutenticacao() {
         senha = 2000,
         plr = 200.0
     )
-
     val cliente = Cliente(
-        nome = "Guilherme",
-        cpf = "123.456.789-00",
-        senha =  1234
+        nome = "Gui",
+        cpf = "333.333.333-33",
+        senha = 1234
     )
 
     val sistema = SistemaInterno()
-    sistema.entra(gerente, 1235)
+    sistema.entra(gerente, 1000)
     sistema.entra(diretora, 2000)
-    sistema.entra(cliente,1234)
-
-
+    sistema.entra(cliente, 1234)
 }

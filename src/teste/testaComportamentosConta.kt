@@ -1,52 +1,70 @@
-package teste
+package br.com.alura.bytebank.teste
 
-import modelo.Cliente
-import modelo.ContaCorrente
-import modelo.ContaPoupanca
+import modelo.*
+import Exception.*
 
 fun testaComportamentosConta() {
 
-    val guiherme = Cliente(nome = "Guilherme Diniz", cpf = "111.111.111-11", senha = 1234)
+    val alex = Cliente(nome = "Alex", cpf = "", senha = 1)
 
-    val contaGuilherme = ContaPoupanca(guiherme, 1000)
-    contaGuilherme.deposita(200.0)
+    val contaAlex = ContaCorrente(titular = alex, numero = 1000)
+    contaAlex.deposita(200.0)
 
-    val joao = Cliente(nome = "João Pedro", cpf = "222.222.222-22", senha = 4321)
+    val fran = Cliente(nome = "Fran", cpf = "", senha = 2)
 
-    val contaJoao = ContaCorrente(joao, 1001)
-    contaJoao.deposita(300.0)
+    val contaFran = ContaPoupanca(numero = 1001, titular = fran)
+    contaFran.deposita(300.0)
 
-    println(contaGuilherme.titular)
-    println(contaGuilherme.numero)
-    println(contaGuilherme.saldo())
+    println(contaFran.titular)
+    println(contaFran.numero)
+    println(contaFran.saldo)
 
-    println(contaJoao.titular)
-    println(contaJoao.numero)
-    println(contaJoao.saldo())
+    println(contaAlex.titular)
+    println(contaAlex.numero)
+    println(contaAlex.saldo)
 
-    println("Depositando na conta do Guilherme")
-    contaGuilherme.deposita(50.0)
-    println(contaGuilherme.saldo())
-    println("Depositando na conta do João Pedro")
-    contaJoao.deposita(100.0)
-    println(contaJoao.saldo())
+    println("depositando na conta do Alex")
+    contaAlex.deposita(50.0)
+    println(contaAlex.saldo)
 
-    println("Sacando da conta do Guilherme")
-    contaGuilherme.saca(250.0)
-    println(contaGuilherme.saldo())
+    println("depositando na conta da Fran")
+    contaFran.deposita(70.0)
+    println(contaFran.saldo)
 
-    println("Sacando na conta do Jão Pedro")
-    contaJoao.saca(100.00)
-    println(contaJoao.saldo())
+    println("sacando na conta do Alex")
+    contaAlex.saca(250.0)
+    println(contaAlex.saldo)
 
-    println("Transferencias da conta do João Pedro para o Guilherme")
+    println("sacando na conta da Fran")
+    contaFran.saca(100.0)
+    println(contaFran.saldo)
 
-    if (contaJoao.transfere(100.00, contaGuilherme)) {
-        println("Tranferencias sucedida")
-    } else {
-        print("Falha na transferencia")
+    println("saque em excesso na conta do Alex")
+    contaAlex.saca(100.0)
+    println(contaAlex.saldo)
+
+    println("saque em excesso na conta da Fran")
+    contaFran.saca(500.0)
+    println(contaFran.saldo)
+
+    println("Transferência da conta da Fran para o Alex")
+
+    try {
+        contaFran.transfere(destino = contaAlex, valor = 250.0, senha = 2)
+        println("Transferência sucedida")
+    } catch (e: SaldoInsuficienteException){
+        println("Falha na transferência")
+        println("Saldo insuficiente")
+        e.printStackTrace()
+    } catch (e: FalhaAutenticacaoException){
+        println("Falha na transferência")
+        println("Falha na autenticação")
+        e.printStackTrace()
+    } catch (e: Exception){
+        println("Erro desconhecido")
+        e.printStackTrace()
     }
 
-    println(contaGuilherme.saldo())
-    println(contaJoao.saldo())
+    println(contaAlex.saldo)
+    println(contaFran.saldo)
 }
