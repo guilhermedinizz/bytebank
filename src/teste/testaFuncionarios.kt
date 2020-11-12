@@ -1,4 +1,4 @@
-package br.com.alura.bytebank.teste
+package teste
 
 import modelo.*
 
